@@ -7,31 +7,59 @@ import TodoList from './components/TodoList';
 class App extends Component {
   state = {
     todos: [],
-    value: '',
+    title: '',
+    desc: '',
+    isEdit: -1,
   };
 
   handleChange = (e) => {
-    const { value } = e.target;
-    this.setState({ value });
+    const { value, name } = e.target;
+    return this.setState({ [name]: value });
   };
 
-  handleClick = () => {
-    const { value: todo } = this.state;
+  handleAdd = () => {
+    const { title, desc } = this.state;
     const todos = [...this.state.todos];
-    todos.push(todo);
-    this.setState({ todos, value: '' });
+    todos.push({ title, desc });
+    this.setState({ todos, title: '', desc: '' });
+  };
+
+  handleDelete = (item) => {
+    const todos = [...this.state.todos];
+    const index = todos.indexOf(item);
+    todos.splice(index, 1);
+    this.setState({ todos });
+  };
+
+  handleEdit = (item) => {
+    const todos = [...this.state.todos];
+    const index = todos.indexOf(item);
+    this.setState({ isEdit: index });
+  };
+
+  handleSaveEdit = (item) => {
+    const todos = [...this.state.todos];
+    const { isEdit } = this.state;
+    todos[isEdit] = item;
+    this.setState({ isEdit: -1, todos });
   };
 
   render() {
-    const { value, todos } = this.state;
+    const { title, desc, todos, isEdit } = this.state;
     return (
       <>
         <TodoForm
           onChange={this.handleChange}
-          value={value}
-          onAdd={this.handleClick}
+          values={{ title, desc }}
+          onAdd={this.handleAdd}
         />
-        <TodoList todos={todos} />
+        <TodoList
+          onSaveEdit={this.handleSaveEdit}
+          isEdit={isEdit}
+          todos={todos}
+          onEdit={this.handleEdit}
+          onDelete={this.handleDelete}
+        />
       </>
     );
   }

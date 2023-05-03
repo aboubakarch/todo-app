@@ -1,6 +1,6 @@
 import React from 'react';
 
-function TodoForm({ value, onChange, onAdd }) {
+function TodoForm({ values: { title, desc }, onChange, onAdd }) {
   return (
     <div className="row">
       <h6>Add Todo list item here</h6>
@@ -8,10 +8,18 @@ function TodoForm({ value, onChange, onAdd }) {
         <input
           onChange={onChange}
           type="text"
-          name="todo"
-          id="todo"
-          placeholder="Enter Todo item"
-          value={value}
+          name="title"
+          id="title"
+          placeholder="Enter Todo Title"
+          value={title}
+        />
+        <input
+          onChange={onChange}
+          type="text"
+          name="desc"
+          id="desc"
+          placeholder="Enter Todo Description"
+          value={desc}
         />
         <button onClick={onAdd}>Add</button>
       </div>

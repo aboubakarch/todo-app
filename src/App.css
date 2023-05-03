@@ -16,6 +16,7 @@
 .header {
   justify-content: center;
   align-items: center;
+  flex-direction: column;
   display: flex;
   width: 100%;
   padding: 0px 20%;
@@ -28,6 +29,7 @@
   border: 1px solid #4d4c4c;
   outline: none;
   padding: 0px 20px;
+  margin-bottom: 20px;
 }
 
 .header button {
@@ -83,6 +85,58 @@
 }
 
 .todo-list-item p {
+  width: 100%;
   font-size: 16px;
   color: #535353;
+  margin: 0px;
+  margin-top: 5px;
+}
+
+.todo-list-item h6 {
+  margin: 0px;
+  width: 100%;
+  font-size: 20px;
+  color: #222222;
+}
+
+.todo-list-item div {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.btn {
+  font-size: 16px;
+  color: #ffffff;
+  border-radius: 20px;
+  height: 40px;
+  min-width: 100px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.btn-edit {
+  margin-right: 10px;
+  background: #3377f6;
+}
+
+.btn-delete {
+  background: #a10000;
+}
+
+.edit-form {
+  display: flex;
+}
+
+.edit-form input {
+  width: 40%;
+  height: 40px;
+  border-radius: 40px;
+  border: 1px solid #4d4c4c;
+  outline: none;
+  padding: 0px 20px;
+  margin-bottom: 20px;
+  margin-right: 10px;
 }
